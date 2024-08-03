@@ -1,21 +1,4 @@
---[=[
-██████╗ ██╗   ██╗    ███████╗████████╗███████╗██████╗  █████╗ ███╗   ██╗ ██╗██████╗ ██╗  ██╗██████╗     ███╗   ███╗██╗   ██╗    ██████╗ ███████╗
-██╔══██╗╚██╗ ██╔╝    ██╔════╝╚══██╔══╝██╔════╝██╔══██╗██╔══██╗████╗  ██║███║╚════██╗██║  ██║╚════██╗    ████╗ ████║╚██╗ ██╔╝    ██╔══██╗██╔════╝
-██████╔╝ ╚████╔╝     ███████╗   ██║   █████╗  ██████╔╝███████║██╔██╗ ██║╚██║ █████╔╝███████║ █████╔╝    ██╔████╔██║ ╚████╔╝     ██║  ██║███████╗
-██╔══██╗  ╚██╔╝      ╚════██║   ██║   ██╔══╝  ██╔═══╝ ██╔══██║██║╚██╗██║ ██║██╔═══╝ ╚════██║ ╚═══██╗    ██║╚██╔╝██║  ╚██╔╝      ██║  ██║╚════██║
-██████╔╝   ██║       ███████║   ██║   ███████╗██║     ██║  ██║██║ ╚████║ ██║███████╗     ██║██████╔╝    ██║ ╚═╝ ██║   ██║       ██████╔╝███████║
-╚═════╝    ╚═╝       ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═╝╚══════╝     ╚═╝╚═════╝     ╚═╝     ╚═╝   ╚═╝       ╚═════╝ ╚══════╝
-  _______ _                 _    _       ______           _    _     _             _ 
- |__   __| |               | |  ( )     |  ____|         | |  | |   (_)           | |
-    | |  | |__   __ _ _ __ | | _|/ ___  | |__ ___  _ __  | |  | |___ _ _ __   __ _| |
-    | |  | '_ \ / _` | '_ \| |/ / / __| |  __/ _ \| '__| | |  | / __| | '_ \ / _` | |
-    | |  | | | | (_| | | | |   <  \__ \ | | | (_) | |    | |__| \__ \ | | | | (_| |_|
-    |_|  |_| |_|\__,_|_| |_|_|\_\ |___/ |_|  \___/|_|     \____/|___/_|_| |_|\__, (_)
-                                                                              __/ |  
-                                                                             |___/                                                                                                                                                   
-]=]
-
--- Instances: 47 | Scripts: 12 | Modules: 0
+-- Instances: 48 | Scripts: 13 | Modules: 0
 local G2L = {};
 
 -- StarterGui.BlackHoleHUB
@@ -370,25 +353,30 @@ G2L["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["2d"]["Text"] = [[Others]];
 G2L["2d"]["Position"] = UDim2.new(0.75565, 0, 0.17859, 0);
 
--- StarterGui.BlackHoleHUB.ImageButton
-G2L["2e"] = Instance.new("ImageButton", G2L["1"]);
-G2L["2e"]["BorderSizePixel"] = 0;
-G2L["2e"]["BackgroundColor3"] = Color3.fromRGB(109, 23, 98);
-G2L["2e"]["Image"] = [[rbxassetid://12760217769]];
-G2L["2e"]["Size"] = UDim2.new(0, 75, 0, 73);
-G2L["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["2e"]["Position"] = UDim2.new(0.00846, 0, 0.89962, 0);
+-- StarterGui.BlackHoleHUB.BackRound.LocalScript
+G2L["2e"] = Instance.new("LocalScript", G2L["3"]);
 
--- StarterGui.BlackHoleHUB.ImageButton.UICorner
-G2L["2f"] = Instance.new("UICorner", G2L["2e"]);
+
+-- StarterGui.BlackHoleHUB.Open/Close
+G2L["2f"] = Instance.new("ImageButton", G2L["1"]);
+G2L["2f"]["BorderSizePixel"] = 0;
+G2L["2f"]["BackgroundColor3"] = Color3.fromRGB(109, 23, 98);
+G2L["2f"]["Image"] = [[rbxassetid://12760217769]];
+G2L["2f"]["Size"] = UDim2.new(0, 75, 0, 73);
+G2L["2f"]["Name"] = [[Open/Close]];
+G2L["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2f"]["Position"] = UDim2.new(0.00846, 0, 0.89962, 0);
+
+-- StarterGui.BlackHoleHUB.Open/Close.UICorner
+G2L["30"] = Instance.new("UICorner", G2L["2f"]);
 
 
 -- StarterGui.BlackHoleHUB.LocalScript
 local function C_2()
 local script = G2L["2"];
 	local SGui = script.Parent
-	local Frame = SGui.Backround:WaitForChild("MyScripts")
-	local Button = SGui.Backround:WaitForChild("M")
+	local Frame = SGui:WaitForChild("BackRound")
+	local Button = SGui:WaitForChild("Open/Close")
 	
 	Button.MouseButton1Up:Connect(function()
 		Frame.Visible = not Frame.Visible
@@ -2620,7 +2608,7 @@ local script = G2L["c"];
 	
 				--now, create the functor:
 				t.Create = setmetatable({}, {__call = function(tb, ...) return Create_PrivImpl(...) end})
-	
+
 				--and create the "Event.E" syntax stub. Really it's just a stub to construct a table which our Create
 				--function can recognize as special.
 				t.Create.E = function(eventName)
@@ -9145,5 +9133,15 @@ local function C_2b()
 	end)
 end;
 task.spawn(C_2b);
+-- StarterGui.BlackHoleHUB.BackRound.LocalScript
+local function C_2e()
+	local script = G2L["2e"];
+	frame = script.Parent
+	frame.Draggable = true
+	frame.Selectable = true
+	frame.Active = true
+
+end;
+task.spawn(C_2e);
 
 return G2L["1"], require;
